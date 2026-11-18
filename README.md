@@ -95,6 +95,19 @@ OLLAMA_ORIGINS=chrome-extension://* ollama serve
 
 **Secutity** the `*` in `chrome-extension://*` should be replaced with the extension id. If you have downloaded Extension | OS from chrome, please use `chrome-extension://bahjnakiionbepnlbogdkojcehaeefnp`
 
+### Windows (PowerShell)
+
+Open `chrome://extensions`, turn on **Developer mode**, and copy the ID shown for your installed Extension | OS. If Ollama is already running in the Windows system tray, quit it before starting the server so it picks up the new setting.
+
+Replace `<extension-id>` with the ID you copied, then run both commands in the same PowerShell window:
+
+```powershell
+$env:OLLAMA_ORIGINS = "chrome-extension://<extension-id>"
+ollama serve
+```
+
+Keep that PowerShell window open while using the local provider. The setting applies to the current PowerShell session and the server it starts.
+
 ### macOS
 
 Run `launchctl setenv` to set `OLLAMA_ORIGINS`.
